@@ -1,7 +1,7 @@
 let inputString = '';
 let x = 0;
 let y = 0;
-let operatorValue = '';
+let operatorValue = 'none';
 let workingTotal = 0;
 
 function addition(x, y) {
@@ -56,7 +56,6 @@ function updateDisplay(number) {
 
 // Buttons 1-9 add to display string
 const takeInput = document.querySelectorAll('.numberbutton');
-
 for (let i = 0; i < takeInput.length; i++) {
     takeInput[i].addEventListener('click', function (e) {
         inputString += e.target.value;
@@ -64,23 +63,21 @@ for (let i = 0; i < takeInput.length; i++) {
     });
 }
 
-// Operator buttons call operate function
+// Operator buttons
 const operatorButton = document.querySelectorAll('.operatorbutton');
-
 for (let i = 0; i < operatorButton.length; i++) {
     operatorButton[i].addEventListener('click', function (e) {
         operatorValue = (e.target.value);
-        x = displayValue;
+        x = displayValue;    
         inputString = '';
     })
 }
 
-// Equal Button
+// Equal Button to call operate function
 const equalButton =  document.querySelector('#equals');
 equalButton.addEventListener('click', function() {
     y = displayValue;
     operate(operatorValue, x, y);
-
 })
 
 // Clear Button to reset everything
