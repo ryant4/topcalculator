@@ -12,7 +12,6 @@ function subtraction(x, y) {
     workingTotal = x - y;
 }
 
-
 function division (x, y) {
     if (y === 0) {
         workingTotal = NaN;
@@ -20,7 +19,6 @@ function division (x, y) {
     }
     workingTotal = x / y;
 }
-
 
 function multiplication (x ,y) {
     workingTotal = x * y;
@@ -74,7 +72,7 @@ for (let i = 0; i < operatorButton.length; i++) {
 }
 
 // Equal Button to call operate function
-const equalButton =  document.querySelector('#equals');
+const equalButton = document.querySelector('#equals');
 equalButton.addEventListener('click', function() {
     y = displayValue;
     operate(operatorValue, x, y);
@@ -86,7 +84,7 @@ clearButton.addEventListener('click', () => {
     inputString = '';
     x = 0;
     y = 0;
-    operatorValue = '';
+    operatorValue = 'none';
     workingTotal = 0;
     updateDisplay(0);
 })
