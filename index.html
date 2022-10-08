@@ -10,35 +10,36 @@
 <body>
 
     <div id="calc-frame">
-        <div id="display"></div>
+        <div id="display">0</div>
         <div id="button-container">
             <div id="num-container">
                 <div id="numbers">
-                    <button>7</button>
-                    <button>8</button>
-                    <button>9</button>
-                    <button>4</button>
-                    <button>5</button>
-                    <button>6</button>
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>Clear</button>
-                    <button>0</button>
-                    <button>.</button>
+                    <button class="numberbutton" value="7">7</button>
+                    <button class="numberbutton" value="8">8</button>
+                    <button class="numberbutton" value="9">9</button>
+                    <button class="numberbutton" value="4">4</button>
+                    <button class="numberbutton" value="5">5</button>
+                    <button class="numberbutton" value="6">6</button>
+                    <button class="numberbutton" value="1">1</button>
+                    <button class="numberbutton" value="2">2</button>
+                    <button class="numberbutton" value="3">3</button>
+                    <button id="clearbutton">Clear</button>
+                    <button class="numberbutton" value="0">0</button>
+                    <button></button>
                 </div>
             </div>
             <div id="operator-container">
-                <button>%</button>
-                <button>X</button>
-                <button>-</button>
-                <button>+</button>
-                <button>=</button>
+                <button class="operatorbutton" value="divide">%</button>
+                <button class="operatorbutton" value="multiply">X</button>
+                <button class="operatorbutton" value="subtract">-</button>
+                <button class="operatorbutton" value="add">+</button>
+                <button id="equals">=</button>
             </div>
         </div>
 
     </div>
 
+<script src="scripts.js"></script>
     
 </body>
 </html>

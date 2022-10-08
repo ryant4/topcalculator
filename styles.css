@@ -16,7 +16,11 @@ button {
     height: 75px;
     width: 250px;
     box-sizing: border-box;
-    
+    font-size: larger;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: yellow;
+    text-align: right;  
+    padding: 25px;  
 }
 
 #button-container {
