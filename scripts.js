@@ -7,11 +7,11 @@ let readyForEqual = false;
 
 function addition(x, y) {
     valueX = x + y;
-}
+};
 
 function subtraction(x, y) {
     valueX = x - y;
-}
+};
 
 function division (x, y) {
     if (y === 0) {
@@ -19,11 +19,11 @@ function division (x, y) {
         return;
     }
     valueX = x / y;
-}
+};
 
 function multiplication (x ,y) {
     valueX = x * y;
-}
+};
 
 // Operate function
 function operate (operatorFunction, x, y) {
@@ -40,14 +40,14 @@ function operate (operatorFunction, x, y) {
         division(x, y);
     }
 
-}
+};
 
 // Populate display function
 function updateDisplay(number) {
     displayValue = parseFloat(number);
     const calcDisplay = document.getElementById("display");
     calcDisplay.innerHTML = displayValue;
-}
+};
 
 // Buttons 1-9 add to display string
 const takeInput = document.querySelectorAll('.numberbutton');
@@ -56,7 +56,7 @@ for (let i = 0; i < takeInput.length; i++) {
         inputString += e.target.value;
         updateDisplay(inputString);
     });
-}
+};
 
 // Operator buttons
 const operatorButton = document.querySelectorAll('.operatorbutton');
@@ -78,7 +78,7 @@ for (let i = 0; i < operatorButton.length; i++) {
         inputString = '';
         readyForEqual = true;
     })
-}
+};
 
 // Equal Button to call operate function
 const equalButton = document.querySelector('#equals');
@@ -93,7 +93,7 @@ equalButton.addEventListener('click', function() {
         inputString = '';
         operatorValue = 'equals';
     }
-})
+});
 
 // Clear Button to reset everything
 const clearButton = document.querySelector('#clearbutton');
@@ -105,4 +105,4 @@ clearButton.addEventListener('click', () => {
     operatorValue = 'none';
     updateDisplay(0);
     readyForEqual = false;
-})
+});
