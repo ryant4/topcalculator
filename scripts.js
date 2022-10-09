@@ -3,6 +3,7 @@ let displayValue = 0;
 let valueX = 0;
 let valueY = 0;
 let operatorValue = 'none';
+let readyForEqual = false;
 
 function addition(x, y) {
     valueX = x + y;
@@ -43,7 +44,7 @@ function operate (operatorFunction, x, y) {
 
 // Populate display function
 function updateDisplay(number) {
-    displayValue = parseInt(number);
+    displayValue = parseFloat(number);
     const calcDisplay = document.getElementById("display");
     calcDisplay.innerHTML = displayValue;
 }
@@ -68,23 +69,30 @@ for (let i = 0; i < operatorButton.length; i++) {
             valueX = displayValue;
         }
         else {
-            // Otherwise, set y to current display, operate, display
+            // Otherwise, set y to current display, operate
             valueY = displayValue;
             operate(operatorValue, valueX, valueY);
             operatorValue = (e.target.value);
         }
         updateDisplay(valueX);
         inputString = '';
+        readyForEqual = true;
     })
 }
 
 // Equal Button to call operate function
 const equalButton = document.querySelector('#equals');
 equalButton.addEventListener('click', function() {
-    valueY = displayValue;
-    operate(operatorValue, valueX, valueY);
-    updateDisplay(valueX);
-    inputString = '';
+    if (readyForEqual === false) {
+        return;
+    }
+    else {
+        valueY = displayValue;
+        operate(operatorValue, valueX, valueY);
+        updateDisplay(valueX);
+        inputString = '';
+        operatorValue = 'equals';
+    }
 })
 
 // Clear Button to reset everything
@@ -96,4 +104,5 @@ clearButton.addEventListener('click', () => {
     valueY = 0;
     operatorValue = 'none';
     updateDisplay(0);
+    readyForEqual = false;
 })
