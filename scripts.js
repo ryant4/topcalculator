@@ -1,49 +1,45 @@
 let inputString = '';
-let x = 0;
-let y = 0;
+let displayValue = 0;
+let valueX = 0;
+let valueY = 0;
 let operatorValue = 'none';
-let workingTotal = 0;
 
 function addition(x, y) {
-    workingTotal = x + y;
+    valueX = x + y;
 }
 
 function subtraction(x, y) {
-    workingTotal = x - y;
+    valueX = x - y;
 }
 
 function division (x, y) {
     if (y === 0) {
-        workingTotal = NaN;
+        valueX = NaN;
         return;
     }
-    workingTotal = x / y;
+    valueX = x / y;
 }
 
 function multiplication (x ,y) {
-    workingTotal = x * y;
+    valueX = x * y;
 }
-
 
 // Operate function
-function operate (operatorFunction, numOne, numTwo) {
+function operate (operatorFunction, x, y) {
     if (operatorFunction === "add") {
-        addition(numOne, numTwo);
+        addition(x, y);
     }
     else if (operatorFunction === "subtract") {
-        subtraction(numOne, numTwo);
+        subtraction(x, y);
     }
     else if (operatorFunction === "multiply") {
-        multiplication(numOne, numTwo)
+        multiplication(x, y)
     }
     else if (operatorFunction === "divide") {
-        division(numOne, numTwo);
+        division(x, y);
     }
-    updateDisplay(workingTotal);
-    inputString = '';
 
 }
-
 
 // Populate display function
 function updateDisplay(number) {
@@ -65,8 +61,19 @@ for (let i = 0; i < takeInput.length; i++) {
 const operatorButton = document.querySelectorAll('.operatorbutton');
 for (let i = 0; i < operatorButton.length; i++) {
     operatorButton[i].addEventListener('click', function (e) {
-        operatorValue = (e.target.value);
-        x = displayValue;    
+        
+        if (operatorValue === 'none') {
+            // Set x to current display, display x, wait for y
+            operatorValue = (e.target.value);
+            valueX = displayValue;
+        }
+        else {
+            // Otherwise, set y to current display, operate, display
+            valueY = displayValue;
+            operate(operatorValue, valueX, valueY);
+            operatorValue = (e.target.value);
+        }
+        updateDisplay(valueX);
         inputString = '';
     })
 }
@@ -74,17 +81,19 @@ for (let i = 0; i < operatorButton.length; i++) {
 // Equal Button to call operate function
 const equalButton = document.querySelector('#equals');
 equalButton.addEventListener('click', function() {
-    y = displayValue;
-    operate(operatorValue, x, y);
+    valueY = displayValue;
+    operate(operatorValue, valueX, valueY);
+    updateDisplay(valueX);
+    inputString = '';
 })
 
 // Clear Button to reset everything
 const clearButton = document.querySelector('#clearbutton');
 clearButton.addEventListener('click', () => {
     inputString = '';
-    x = 0;
-    y = 0;
+    displayValue = 0;
+    valueX = 0;
+    valueY = 0;
     operatorValue = 'none';
-    workingTotal = 0;
     updateDisplay(0);
 })
