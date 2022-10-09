@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'DigitalClock';
+    src: url(digital-7.ttf);
+}
+
 body {
     background-color: bisque;
 }
@@ -23,8 +28,8 @@ button {
     height: 75px;
     width: 250px;
     box-sizing: border-box;
-    font-size: larger;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40px;
+    font-family: 'DigitalClock';
     color: yellow;
     text-align: right;  
     padding: 25px;  
